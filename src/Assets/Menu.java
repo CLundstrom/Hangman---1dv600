@@ -13,7 +13,7 @@ public class Menu {
      * Asks for user input.
      *
      * */
-    public void promptUserInput() {
+    public int userInput() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Navigate using numbers: ");
         String answer = sc.nextLine();
@@ -31,9 +31,8 @@ public class Menu {
 
         switch (parsed) {
             case 1:
-                System.out.println("Not active. Exiting..");
-                System.exit(0);
-                break;
+                System.out.println("Starting game..");
+                return 1;
             case 2:
                 System.out.println("Not active. Exiting..");
                 System.exit(0);
@@ -46,9 +45,10 @@ public class Menu {
                 attempts++;
                 System.err.println("You can only navigate using the numbers. Try again. Attempt " + attempts + " of " + MAX_ATTEMPTS + ".");
                 checkAttempts();
-                promptUserInput();
+                userInput();
                 break;
         }
+        return 0;
     }
 
     private void checkAttempts() {
@@ -57,7 +57,7 @@ public class Menu {
             System.exit(0);
         }
         else{
-            promptUserInput();
+            userInput();
         }
     }
 
@@ -66,7 +66,7 @@ public class Menu {
      *
      * */
     public void printWelcome() {
-        System.out.println("-------------------------\n     Hangman 0.1.1\n-------------------------");
+        System.out.println("-------------------------\n     Hangman 0.1.2\n-------------------------");
         System.out.println("\n1. Play (inactive)");
         System.out.println("2. Highscore(inactive)");
         System.out.println("3. Exit");

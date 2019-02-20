@@ -1,0 +1,17 @@
+
+
+HangmanMain >
+    Menu
+        Play
+            GameController
+                PlayerController
+                    Player
+                SceneController
+                    Scene
+                WordController
+                    Word
+
+        HighScore
+            tbd
+        Quit
+            Exit

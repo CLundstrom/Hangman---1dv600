@@ -5,9 +5,17 @@ public class HangmanMain {
     public static void main(String[] args) {
 
         Menu menu = new Menu();
-        menu.printWelcome();
-        menu.promptUserInput();
+        //menu.printWelcome();
+        initiatePlay();
+        if(menu.userInput() == 1){
+            initiatePlay();
+        }
 
+    }
+
+    private static void initiatePlay() {
+        GameController gc = new GameController();
+        gc.start();
     }
 
 
