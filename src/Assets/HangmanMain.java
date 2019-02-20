@@ -5,8 +5,7 @@ public class HangmanMain {
     public static void main(String[] args) {
 
         Menu menu = new Menu();
-        //menu.printWelcome();
-        initiatePlay();
+        menu.printWelcome();
         if(menu.userInput() == 1){
             initiatePlay();
         }

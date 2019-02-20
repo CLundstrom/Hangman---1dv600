@@ -7,6 +7,7 @@ public class Menu {
     private final int MAX_ATTEMPTS = 3;
     private int menuId = 0;
     private int attempts = 0;
+    int parsed;
 
 
     /**
@@ -17,7 +18,6 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         System.out.print("Navigate using numbers: ");
         String answer = sc.nextLine();
-        int parsed;
 
         try {
             parsed = Integer.parseInt(answer);
@@ -28,25 +28,25 @@ public class Menu {
             parsed = 0; // Guide to switch default.
             checkAttempts();
         }
-
-        switch (parsed) {
-            case 1:
-                System.out.println("Starting game..");
-                return 1;
-            case 2:
-                System.out.println("Not active. Exiting..");
-                System.exit(0);
-                break;
-            case 3:
-                System.out.println("Exiting..");
-                System.exit(0);
-                break;
-            default:
-                attempts++;
-                System.err.println("You can only navigate using the numbers. Try again. Attempt " + attempts + " of " + MAX_ATTEMPTS + ".");
-                checkAttempts();
-                userInput();
-                break;
+        finally {
+            switch (parsed) {
+                case 1:
+                    return 1;
+                case 2:
+                    System.out.println("Not active. Exiting..");
+                    System.exit(0);
+                    break;
+                case 3:
+                    System.out.println("Exiting..");
+                    System.exit(0);
+                    break;
+                default:
+                    attempts++;
+                    System.err.println("You can only navigate using the numbers. Try again. Attempt " + attempts + " of " + MAX_ATTEMPTS + ".");
+                    checkAttempts();
+                    userInput();
+                    break;
+            }
         }
         return 0;
     }
@@ -67,7 +67,7 @@ public class Menu {
      * */
     public void printWelcome() {
         System.out.println("-------------------------\n     Hangman 0.1.2\n-------------------------");
-        System.out.println("\n1. Play (inactive)");
+        System.out.println("\n1. Play");
         System.out.println("2. Highscore(inactive)");
         System.out.println("3. Exit");
     }

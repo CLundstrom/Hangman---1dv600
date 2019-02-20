@@ -2,8 +2,7 @@ package Assets;
 
 public class GameController {
 
-    private boolean isRoundWon = false;
-    private boolean running = true;
+    private boolean running = false;
     private Game game;
 
     public GameController(){
@@ -11,13 +10,15 @@ public class GameController {
     }
 
     public void start(){
-        game = new Game();
+        this.running = true;
+        this.game = new Game();
+        stop();
 
     }
 
     public void stop(){
-
-
+        this.running = false;
+        HangmanMain.main(null);
     }
 
 }

@@ -16,6 +16,7 @@ public class Game {
     private String compareWord = word.getWord();
     private String[] maskedWord = new String[word.length()];
     private int score = 0;
+    private boolean roundOver = false;
 
     /**
      * Initiates the Game by preparing the scenes and words.
@@ -27,7 +28,18 @@ public class Game {
         sc.loadScenes(); // loading scenes into memory
         sc.getCurrentScene().show(); // display first scene
         wordPrompt();
+        endRound();
     }
+
+    private void endRound() {
+        System.out.println("\nPress 'Enter' key to continue...");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e) {e.printStackTrace();}
+    }
+
 
     /**
      * Masks the word for use during gameplay.
@@ -49,7 +61,6 @@ public class Game {
         if (compareWord.toLowerCase().contains(guess)) {
             // loop to replace all instances of the guess in masked.
             while (compareWord.contains(guess)) {
-                //increase score
                 score++;
                 //get index
                 int index = compareWord.indexOf(guess);
@@ -75,41 +86,56 @@ public class Game {
      */
     private void guessCharacter() {
         String input = getCharacter();
-
-        // Right guess, victory
-        if (isCorrectGuess(input) && isVictory()) {
-            printMaskedWord(false);
-            System.out.println("\tVICTORY!!\nScore: " + score);
-        }
-
-        // Right guess, not victory
-        else if (isCorrectGuess(input)) {
-            sc.clear();
-            sc.getCurrentScene().show();
-            System.out.print("\nCorrect! ");
-        }
-
-        //Wrong guess, loss
-        else if (!isCorrectGuess(input) && isRoundLost()) {
-            System.out.print("Correct word: ");
-            printMaskedWord(false);
-        }
-        // Wrong guess, not lost.
-        else {
+        if (isCorrectGuess(input)) {
+            // Right guess, victory
+            if (isVictory()) {
+                System.out.println("\t");
+                printMaskedWord(false);
+                System.out.println("\n-------VICTORY!!-----------");
+            } else {
+                // Right guess, not victory
+                sc.clear();
+                sc.getCurrentScene().show();
+                System.out.print("\nCorrect! ");
+            }
+        } else {
             attempts++;
-            sc.clear();
-            sc.nextScene();
-            sc.getCurrentScene().show();
-            System.out.print("\n\n\t\tWrong! ");
+            //Wrong guess, loss
+            if (isRoundLost()) {
+                sc.clear();
+                sc.nextScene();
+                sc.getCurrentScene().show();
+                System.out.print("\nCorrect word: ");
+                printMaskedWord(false);
+                //showScore(); to be defined
+            } else {
+                // Wrong guess, not lost.
+                sc.clear();
+                sc.nextScene();
+                sc.getCurrentScene().show();
+                System.out.print("\n\n\t\tWrong! ");
+            }
         }
+    }
+
+    private void showScore() {
+        System.out.print("\nScore: " + score);
+
     }
 
     private boolean isRoundLost() {
-        return attempts == MAX_ATTEMPTS;
+        if(attempts == MAX_ATTEMPTS){
+            roundOver = true;
+        }
+        else{
+            roundOver = false;
+        }
+        return this.roundOver;
     }
 
     private boolean isVictory() {
-        return score >= word.length();
+        roundOver = score >= word.length();
+        return roundOver;
     }
 
     /**
@@ -129,15 +155,18 @@ public class Game {
      * Main word loop prompt.
      */
     private void wordPrompt() {
+
         System.out.println("\nGuess a character. Fails left: " + (MAX_ATTEMPTS - attempts) + "\n");
         System.out.print("       ");
         printMaskedWord(true);
         System.out.print("\n\nEnter: ");
-        while (!isRoundLost() || !isVictory()) {
+        while (!roundOver) {
             guessCharacter(); // fetch and guess
+            if(isRoundLost() || isVictory()){
+                break;
+            }
             wordPrompt(); // recursive.
         }
-
     }
 
     /**

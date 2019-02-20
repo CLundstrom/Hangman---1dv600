@@ -6,6 +6,7 @@ public class PlayerController {
 
     private ArrayList<Player> players = new ArrayList<>();
     private Player player;
+    private int score;
 
     public void createPlayer(){
         player = new Player();
