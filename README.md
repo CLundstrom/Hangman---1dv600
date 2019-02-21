@@ -3,11 +3,10 @@
 An agile Software Engineering project by Christoffer Lundström.
 
 ## Documentation
-Project plan found under src/documentation.
+Project plan & design found under src/documentation.
 
 Main entry of game is HangmanMain.java.
 
-Will later be compiled to .jar.
 ## Todo
 
 * Iteration 3 - Unit testing
@@ -24,6 +23,8 @@ On the horison (big maybe):
 * tbd
 
 ### 0.1.2a
+* Add - Design schemes.
+* Add - Updated time-log in project plan.
 * Add - Design & implementation
 * Add - Task 3, 4, 5, 6 and 7 completed according to project plan.
 
