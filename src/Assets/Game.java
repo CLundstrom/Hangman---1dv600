@@ -159,7 +159,8 @@ public class Game {
         System.out.println("\nGuess a character. Fails left: " + (MAX_ATTEMPTS - attempts) + "\n");
         System.out.print("       ");
         printMaskedWord(true);
-        System.out.print("\n\nEnter: ");
+        System.out.println("\n\nType 'abort' to return to menu.");
+        System.out.print("\nEnter: ");
         while (!roundOver) {
             guessCharacter(); // fetch and guess
             if(isRoundLost() || isVictory()){
@@ -179,6 +180,10 @@ public class Game {
         String c = "";
         try {
             c = sc.next();
+            c = c.toLowerCase();
+            if(c.contains("abort")){
+                HangmanMain.main(null); //return to main.
+            }
             while (c.length() > 1) {
                 System.out.print("\nYou may only enter one character.\nEnter: ");
                 c = sc.next();
