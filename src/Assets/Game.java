@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class Game {
 
+    public static boolean DEBUG = false;
     private WordController wh = new WordController();
     private SceneController sc = new SceneController();
     private PlayerController pc = new PlayerController();
@@ -22,13 +23,23 @@ public class Game {
      * Initiates the Game by preparing the scenes and words.
      */
     public Game() {
-        pc.createPlayer();
-        wh.loadWords(); // load words to memory
-        maskWord();
-        sc.loadScenes(); // loading scenes into memory
-        sc.getCurrentScene().show(); // display first scene
-        wordPrompt();
-        endRound();
+        initiateGame();
+    }
+
+    public Game(boolean DEBUG) {
+        this.DEBUG = DEBUG;
+    }
+
+    private void initiateGame(){
+        if(!DEBUG){
+            pc.createPlayer();
+            wh.loadWords(); // load words to memory
+            maskWord();
+            sc.loadScenes(); // loading scenes into memory
+            sc.getCurrentScene().show(); // display first scene
+            wordPrompt();
+            endRound();
+        }
     }
 
     private void endRound() {
@@ -57,21 +68,26 @@ public class Game {
      * @param guess Entered guess.
      * @return True if guess is correct.
      */
-    private boolean isCorrectGuess(String guess) {
-        if (compareWord.toLowerCase().contains(guess)) {
-            // loop to replace all instances of the guess in masked.
-            while (compareWord.contains(guess)) {
-                score++;
-                //get index
-                int index = compareWord.indexOf(guess);
-                // replace masked with guess.
-                maskedWord[index] = guess;
+    public boolean isCorrectGuess(String guess) {
+        if (compareWord.toLowerCase().contains(guess.toLowerCase())) {
 
-                char[] tmp = compareWord.toCharArray();
-                tmp[index] = '-';
+           if(DEBUG) {
+               maskedWord = new String[90];
+           }
+                // loop to replace all instances of the guess in masked.
+               while (compareWord.contains(guess)) {
+                   //get index
+                   int index = compareWord.indexOf(guess);
+                   // replace masked with guess.
 
-                compareWord = String.valueOf(tmp);
-            }
+                   maskedWord[index] = guess;
+
+                   char[] tmp = compareWord.toCharArray();
+                   tmp[index] = '-';
+
+                   compareWord = String.valueOf(tmp);
+               }
+            score++;
             return true;
         } else {
             return false;
@@ -118,12 +134,16 @@ public class Game {
         }
     }
 
-    private void showScore() {
-        System.out.print("\nScore: " + score);
+    public int getScore() {
+        return this.score;
 
     }
 
-    private boolean isRoundLost() {
+    public void increaseAttempts(){
+        this.attempts+= 1;
+    }
+
+    public boolean isRoundLost() {
         if(attempts == MAX_ATTEMPTS){
             roundOver = true;
         }
@@ -192,6 +212,11 @@ public class Game {
             e.printStackTrace();
         }
         return c;
+    }
+
+    public void setWord(String word){
+
+        this.compareWord = word;
     }
 
 }
