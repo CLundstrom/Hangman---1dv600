@@ -3,24 +3,31 @@
 An agile Software Engineering project by Christoffer Lundström.
 
 ## Documentation
-Project plan & design found under src/documentation.
+Project plan & design and unit tests found under src/documentation.
 
 Main entry of game is HangmanMain.java.
 
 ## Todo
 
-* Iteration 3 - Unit testing
 * Iteration 4 - Release
 
 
-On the horison (big maybe): 
+Possible future project additions: 
 
 * GUI
+* Highscores
 
 ## Changelog
    
 ### Known issues
 * tbd
+
+### 0.1.3a
+* Rem - Highscores discontinued for now.
+* Add - Unit tests.
+* Add - Test plan & Revised project plan.
+* Add - Code revisions.
+* Add - Test result screenshots
 
 ### 0.1.2a
 * Add - Design schemes.

@@ -8,17 +8,29 @@ class GameTest {
 
 
 
+    // Testing the incomplete test-function
+    @Test
+    public void loadHighscores(){
+        Highscore hs = new Highscore();
+        // Make sure list is loaded correctly.
+        assertNotNull(hs.getList());
+    }
+
+    @Test
+    public void isPlayerNameSet(){
+        Player player = new Player();
+        assertNotNull(player.getName());
+    }
+
 
     @Test
     public void isCorrectGuessIgnoreCasing(){
         Game game = new Game(true);
-        game.setWord("Test");
+        game.setWord("test");
 
         assertTrue(game.isCorrectGuess("T"));
         assertTrue(game.isCorrectGuess("E"));
         assertTrue(game.isCorrectGuess("S"));
-        assertTrue(game.isCorrectGuess("t"));
-        assertTrue(game.isCorrectGuess("e"));
     }
 
     @Test
@@ -27,8 +39,7 @@ class GameTest {
         game.setWord("Test");
 
         assertFalse(game.isCorrectGuess("Ta"));
-        assertFalse(game.isCorrectGuess("000000"));
-
+        assertFalse(game.isCorrectGuess("_^0000xas00"));
     }
 
     @Test
@@ -40,7 +51,6 @@ class GameTest {
         assertFalse(game.isCorrectGuess("k"));
         assertTrue(game.isCorrectGuess("e"));
         assertTrue(game.isCorrectGuess("s"));
-
     }
     @Test
     public void isCorrectScore(){

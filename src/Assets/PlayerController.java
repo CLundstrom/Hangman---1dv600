@@ -12,4 +12,12 @@ public class PlayerController {
         player = new Player();
         player.promptPlayerName();
     }
+
+    public void setHighscore(){
+
+
+
+
+
+    }
 }
