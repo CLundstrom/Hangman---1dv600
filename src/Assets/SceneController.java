@@ -29,7 +29,7 @@ public class SceneController {
     /**
      *  Clears the console window. ( Modern problems require modern solutions lol )
      */
-    public void clear(){
+    public static void clear(){
 
         for(int i=0; i < 10;i++){
             System.out.println();

@@ -42,6 +42,13 @@ public class Game {
         }
     }
 
+    private void updateScore() {
+      HighscoreController hc = new HighscoreController();
+      Player current = pc.getPlayer();
+      current.setScore(score);
+      hc.add(current);
+    }
+
     private void endRound() {
         System.out.println("\nPress 'Enter' key to continue...");
         try
@@ -74,6 +81,7 @@ public class Game {
            if(DEBUG) {
                maskedWord = new String[90];
            }
+                int count=0;
                 // loop to replace all instances of the guess in masked.
                while (compareWord.contains(guess)) {
                    //get index
@@ -84,10 +92,10 @@ public class Game {
 
                    char[] tmp = compareWord.toCharArray();
                    tmp[index] = '-';
-
+                   count++;
                    compareWord = String.valueOf(tmp);
                }
-            score++;
+            score+=count;
             return true;
         } else {
             return false;
@@ -108,6 +116,7 @@ public class Game {
                 System.out.println("\t");
                 printMaskedWord(false);
                 System.out.println("\n-------VICTORY!!-----------");
+                updateScore();
             } else {
                 // Right guess, not victory
                 sc.clear();

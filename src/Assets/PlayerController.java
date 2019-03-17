@@ -13,11 +13,8 @@ public class PlayerController {
         player.promptPlayerName();
     }
 
-    public void setHighscore(){
-
-
-
-
-
+    Player getPlayer(){
+        return player;
     }
+
 }

@@ -33,9 +33,7 @@ public class Menu {
                 case 1:
                     return 1;
                 case 2:
-                    System.out.println("Not active. Exiting..");
-                    System.exit(0);
-                    break;
+                    return 2;
                 case 3:
                     System.out.println("Exiting..");
                     System.exit(0);
@@ -68,7 +66,7 @@ public class Menu {
     public void printWelcome() {
         System.out.println("-------------------------\n     Hangman 0.1.2\n-------------------------");
         System.out.println("\n1. Play");
-        System.out.println("2. Highscore(inactive)");
+        System.out.println("2. Highscore");
         System.out.println("3. Exit");
     }
 }

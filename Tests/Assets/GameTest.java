@@ -11,7 +11,7 @@ class GameTest {
     // Testing the incomplete test-function
     @Test
     public void loadHighscores(){
-        Highscore hs = new Highscore();
+        HighscoreController hs = new HighscoreController();
         // Make sure list is loaded correctly.
         assertNotNull(hs.getList());
     }

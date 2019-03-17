@@ -2,7 +2,7 @@ package Assets;
 
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Comparable<Player>{
 
     private String name;
     private int score;
@@ -10,9 +10,9 @@ public class Player {
     private final int MIN_NAME_CHARS = 3;
 
 
-    public Player(String name){
+    public Player(String name, int score){
         setName(name);
-        this.score = 0;
+        this.score = score;
     }
 
     public Player(){
@@ -23,6 +23,12 @@ public class Player {
 
     public String getName(){
         return this.name;
+    }
+    public int getScore(){
+        return this.score;
+    }
+    public void setScore(int score){
+        this.score = score;
     }
     public void setName(String name){
         if(name.length() > MAX_NAME_CHARS || name.length() < MIN_NAME_CHARS){
@@ -44,4 +50,12 @@ public class Player {
 
     }
 
+    @Override
+    public String toString(){
+        return this.name;
+    }
+    @Override
+    public int compareTo(Player o) {
+        return o.score - this.score;
+    }
 }
