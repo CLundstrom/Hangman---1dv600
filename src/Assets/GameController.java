@@ -1,5 +1,9 @@
 package Assets;
 
+/**
+ * Main game controller.
+ * Controls the running state of each game.
+ */
 public class GameController {
 
     private boolean running = false;
