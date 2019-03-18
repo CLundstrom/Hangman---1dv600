@@ -7,24 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
 
-
-    // Testing the incomplete test-function
     @Test
-    public void loadHighscores(){
+    public void loadHighscores() {
         HighscoreController hs = new HighscoreController();
         // Make sure list is loaded correctly.
         assertNotNull(hs.getList());
     }
 
     @Test
-    public void isPlayerNameSet(){
+    public void isPlayerNameSet() {
         Player player = new Player();
         assertNotNull(player.getName());
     }
 
 
     @Test
-    public void isCorrectGuessIgnoreCasing(){
+    public void isCorrectGuessIgnoreCasing() {
         Game game = new Game(true);
         game.setWord("test");
 
@@ -34,7 +32,7 @@ class GameTest {
     }
 
     @Test
-    public void isWrongGuessWhenAmountOfCharMismatch(){
+    public void isWrongGuessWhenAmountOfCharMismatch() {
         Game game = new Game(true);
         game.setWord("Test");
 
@@ -43,7 +41,7 @@ class GameTest {
     }
 
     @Test
-    public void isCorrectGuess(){
+    public void isCorrectGuess() {
         Game game = new Game(true);
         game.setWord("Test");
 
@@ -52,16 +50,17 @@ class GameTest {
         assertTrue(game.isCorrectGuess("e"));
         assertTrue(game.isCorrectGuess("s"));
     }
+
     @Test
-    public void isCorrectScore(){
+    public void isCorrectScore() {
         Game game = new Game(true);
-        game.setWord("Test");
+        game.setWord("test");
         game.isCorrectGuess("t");
         game.isCorrectGuess("e");
         game.isCorrectGuess("s");
-        assertEquals(3, game.getScore());
+        assertEquals(4, game.getScore());
         game = new Game(true);
-        game.setWord("Hi");
+        game.setWord("hi");
         game.isCorrectGuess("h");
         game.isCorrectGuess("i");
         assertEquals(2, game.getScore());
@@ -69,22 +68,22 @@ class GameTest {
     }
 
     @Test
-    public void isRoundLostWhenOutOfAttempts(){
+    public void isRoundLostWhenOutOfAttempts() {
         Game game = new Game(true);
         game.setWord("Test");
         int MAX_ROUNDS = 7;
-        for (int i=0; i < MAX_ROUNDS;i++){
+        for (int i = 0; i < MAX_ROUNDS; i++) {
             game.increaseAttempts();
         }
         assertTrue(game.isRoundLost());
     }
 
     @Test
-    public void isRoundLost(){
+    public void isRoundLost() {
         Game game = new Game(true);
         game.setWord("Test");
         int MAX_ROUNDS = 6;
-        for (int i=0; i < MAX_ROUNDS;i++){
+        for (int i = 0; i < MAX_ROUNDS; i++) {
             game.increaseAttempts();
             assertFalse(game.isRoundLost());
         }

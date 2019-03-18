@@ -9,10 +9,9 @@ public class HangmanMain {
         menu.printWelcome();
         int answer = menu.userInput();
         //int answer = 2;
-        if(answer == 1){
+        if (answer == 1) {
             initiatePlay();
-        }
-        else if (answer == 2){
+        } else if (answer == 2) {
             initiateHighscore();
         }
     }
@@ -23,11 +22,10 @@ public class HangmanMain {
     }
 
     private static void initiateHighscore() {
-        //HighscoreController hc = new HighscoreController();
         HighscoreController hc1 = new HighscoreController();
         SceneController.clear();
         hc1.printList();
-
-       // hc.printList();
+        Game.endRound();
+        HangmanMain.main(null);
     }
 }
