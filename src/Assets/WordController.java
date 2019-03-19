@@ -3,6 +3,7 @@ package Assets;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class WordController {
 
 
     private ArrayList<Word> words = new ArrayList<>();
-    private File wordsFile = new File("src/Scenes/words.txt");
+    private File wordsFile = new File(Paths.get("src/Scenes/words.txt").toUri());
 
 
     public WordController(){

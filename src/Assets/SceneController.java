@@ -1,5 +1,6 @@
 package Assets;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class SceneController {
@@ -16,14 +17,14 @@ public class SceneController {
     }
 
     public void loadScenes(){
-        scenes.add(new Scene("src/Scenes/scene1.txt"));
-        scenes.add(new Scene("src/Scenes/scene2.txt"));
-        scenes.add(new Scene("src/Scenes/scene3.txt"));
-        scenes.add(new Scene("src/Scenes/scene4.txt"));
-        scenes.add(new Scene("src/Scenes/scene5.txt"));
-        scenes.add(new Scene("src/Scenes/scene6.txt"));
-        scenes.add(new Scene("src/Scenes/scene7.txt"));
-        scenes.add(new Scene("src/Scenes/scene8.txt"));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene1.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene2.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene3.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene4.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene5.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene6.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene7.txt").toString()));
+        scenes.add(new Scene(Paths.get("src/Scenes/scene8.txt").toString()));
     }
 
     /**

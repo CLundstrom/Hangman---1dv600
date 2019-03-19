@@ -77,7 +77,7 @@ public class HighscoreController {
      */
     private void save() {
         try {
-            PrintWriter p = new PrintWriter("src\\Scenes\\highscores.dat");
+            PrintWriter p = new PrintWriter(Paths.get("src/Scenes/highscores.dat").toFile());
             // Save only top 10
             Iterator<Player> it = list.iterator();
             int i = 0;
