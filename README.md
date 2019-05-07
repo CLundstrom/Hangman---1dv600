@@ -9,7 +9,11 @@ Main entry of game is HangmanMain.java.
 
 ## Todo
 
-Project complete.
+* Nothing urgent.
+
+Possible future project additions: 
+
+* GUI
 
 ## Changelog
    
